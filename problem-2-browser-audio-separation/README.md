@@ -386,10 +386,6 @@ this.processor.onaudioprocess = (event) => {
 };
 ```
 
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](../../CONTRIBUTING.md) for development guidelines.
-
 ## 📄 License
 
 This project is part of the Infina AI assignment. See the main repository for license information.

@@ -337,10 +337,6 @@ const AudioCapture = () => {
 3. **Resource Cleanup**: Proper cleanup on errors
 4. **User Feedback**: Clear error messages and suggestions
 
-## 🤝 Contributing
-
-See [CONTRIBUTING.md](../../CONTRIBUTING.md) for development guidelines.
-
 ## 📄 License
 
 This project is part of the Infina AI assignment. See the main repository for license information.
