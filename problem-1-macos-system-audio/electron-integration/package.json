@@ -1,0 +1,37 @@
+{
+  "name": "macos-audio-capture-electron",
+  "version": "1.0.0",
+  "description": "Electron bridge for macOS system audio capture",
+  "main": "dist/bridge.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "start": "node dist/bridge.js"
+  },
+  "keywords": [
+    "macos",
+    "audio",
+    "capture",
+    "electron",
+    "swift",
+    "coreaudio"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^4.9.0"
+  },
+  "dependencies": {
+    "electron": "^25.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 

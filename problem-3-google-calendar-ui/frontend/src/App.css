@@ -1,0 +1,180 @@
+/* App-specific styles */
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  color: #2d3748;
+}
+
+.container h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #2d3748;
+}
+
+.container h2 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+  color: #2d3748;
+}
+
+.container h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: #2d3748;
+}
+
+.container p {
+  margin: 0.5rem 0;
+  color: #4a5568;
+}
+
+/* Header styles */
+.container .card:first-child {
+  margin-bottom: 1.5rem;
+}
+
+/* Event item enhancements */
+.event-item {
+  position: relative;
+  overflow: hidden;
+}
+
+.event-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+.event-item:hover::before {
+  width: 6px;
+  transition: width 0.2s ease;
+}
+
+/* Status enhancements */
+.status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.status.info {
+  background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%);
+}
+
+/* Button enhancements */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+/* Loading animation */
+.spinner {
+  border-width: 3px;
+  border-style: solid;
+  border-color: #e2e8f0;
+  border-top-color: #667eea;
+  animation: spin 1s linear infinite;
+}
+
+/* Responsive improvements */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .container h1 {
+    font-size: 1.5rem;
+  }
+  
+  .container h2 {
+    font-size: 1.25rem;
+  }
+  
+  .event-item {
+    padding: 0.75rem;
+  }
+  
+  .event-title {
+    font-size: 1rem;
+  }
+  
+  .event-time,
+  .event-location {
+    font-size: 0.8rem;
+  }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+  .container h1,
+  .container h2,
+  .container h3 {
+    color: white;
+  }
+  
+  .container p {
+    color: #a0aec0;
+  }
+  
+  .event-item::before {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+}
+
+/* Animation for new events */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.event-item {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Focus styles for accessibility */
+.btn:focus,
+.event-item:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .btn,
+  .status {
+    display: none;
+  }
+  
+  .card {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+} 

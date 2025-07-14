@@ -1,0 +1,127 @@
+<mxfile host="app.diagrams.net" modified="2024-01-14T19:36:00.000Z" agent="5.0" etag="architecture" version="22.1.16" type="device">
+  <diagram name="macOS System Audio Capture Architecture" id="architecture">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Electron Frontend -->
+        <mxCell id="frontend" value="Electron Frontend&#xa;(React/HTML/CSS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Node.js Bridge -->
+        <mxCell id="bridge" value="Node.js Bridge&#xa;(bridge.ts)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Swift CLI Tool -->
+        <mxCell id="swift" value="Swift CLI Tool&#xa;(audio_capture.swift)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="40" width="160" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- CoreAudio -->
+        <mxCell id="coreaudio" value="CoreAudio API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="160" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- AVFoundation -->
+        <mxCell id="avfoundation" value="AVFoundation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Audio HAL -->
+        <mxCell id="hal" value="Audio HAL&#xa;(Hardware)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="320" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Virtual Audio Device -->
+        <mxCell id="virtual" value="Virtual Audio Device&#xa;(BlackHole/Loopback)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="240" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- System Audio -->
+        <mxCell id="system" value="System Audio Output&#xa;(Applications, Music)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e6f3ff;strokeColor=#0066cc;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Output File -->
+        <mxCell id="output" value="Output File&#xa;(.caf, .wav, .aiff)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f0f0f0;strokeColor=#999999;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="400" width="160" height="60" as="geometry" />
+        </mxCell>
+        
+        <!-- Connections -->
+        <mxCell id="conn1" value="IPC Communication" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="frontend" target="bridge">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn2" value="child_process.spawn()" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="bridge" target="swift">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn3" value="Audio Engine" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="swift" target="avfoundation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn4" value="Audio Taps" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="avfoundation" target="coreaudio">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn5" value="Hardware Interface" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="coreaudio" target="hal">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn6" value="Audio Routing" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="system" target="virtual">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn7" value="Virtual Device" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="virtual" target="avfoundation">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="conn8" value="File Output" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#666666;strokeWidth=2;" edge="1" parent="1" source="swift" target="output">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Data Flow Labels -->
+        <mxCell id="flow1" value="1. User Interface" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="120" y="20" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow2" value="2. Process Management" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="320" y="20" width="100" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow3" value="3. Audio Capture" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="560" y="20" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="flow4" value="4. System Audio" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="760" y="20" width="80" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend" value="Legend" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="500" width="60" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend1" value="Frontend Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="530" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend2" value="Bridge Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="150" y="530" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend3" value="Audio Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="260" y="530" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="legend4" value="System Layer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="370" y="530" width="100" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 

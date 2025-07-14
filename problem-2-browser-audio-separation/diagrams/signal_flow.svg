@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bg)"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="20" font-weight="bold">
+    Audio Separation Signal Flow
+  </text>
+  
+  <!-- Input Stage -->
+  <rect x="50" y="80" width="150" height="80" rx="10" fill="rgba(255,255,255,0.9)" stroke="#4299e1" stroke-width="3"/>
+  <text x="125" y="105" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Input Capture</text>
+  <text x="125" y="125" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">🎤 Microphone</text>
+  <text x="125" y="140" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">getUserMedia()</text>
+  <text x="125" y="155" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">🔊 System Audio</text>
+  <text x="125" y="170" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">getDisplayMedia()</text>
+  
+  <!-- Arrow 1 -->
+  <text x="250" y="120" fill="white" font-family="Arial, sans-serif" font-size="24">→</text>
+  
+  <!-- Processing Stage -->
+  <rect x="300" y="80" width="200" height="80" rx="10" fill="rgba(255,255,255,0.9)" stroke="#48bb78" stroke-width="3"/>
+  <text x="400" y="105" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Signal Processing</text>
+  <text x="400" y="125" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">🎚️ Noise Gating</text>
+  <text x="400" y="140" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">🔄 Adaptive Filtering</text>
+  <text x="400" y="155" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">📊 Spectral Subtraction</text>
+  
+  <!-- Arrow 2 -->
+  <text x="550" y="120" fill="white" font-family="Arial, sans-serif" font-size="24">→</text>
+  
+  <!-- Output Stage -->
+  <rect x="600" y="80" width="150" height="80" rx="10" fill="rgba(255,255,255,0.9)" stroke="#ed8936" stroke-width="3"/>
+  <text x="675" y="105" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Separated Output</text>
+  <text x="675" y="125" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">🎤 Clean Microphone</text>
+  <text x="675" y="140" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="12">🔊 Clean System Audio</text>
+  
+  <!-- Algorithm Details -->
+  <rect x="50" y="200" width="700" height="180" rx="10" fill="rgba(255,255,255,0.9)" stroke="#667eea" stroke-width="2"/>
+  <text x="400" y="225" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="16" font-weight="bold">Separation Algorithms</text>
+  
+  <!-- Algorithm 1 -->
+  <rect x="70" y="240" width="150" height="60" rx="5" fill="#f7fafc" stroke="#4299e1" stroke-width="2"/>
+  <text x="145" y="260" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Noise Gating</text>
+  <text x="145" y="275" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">Mutes signals below</text>
+  <text x="145" y="290" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">threshold</text>
+  
+  <!-- Algorithm 2 -->
+  <rect x="240" y="240" width="150" height="60" rx="5" fill="#f7fafc" stroke="#48bb78" stroke-width="2"/>
+  <text x="315" y="260" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Adaptive Filtering</text>
+  <text x="315" y="275" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">LMS algorithm for</text>
+  <text x="315" y="290" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">echo cancellation</text>
+  
+  <!-- Algorithm 3 -->
+  <rect x="410" y="240" width="150" height="60" rx="5" fill="#f7fafc" stroke="#ed8936" stroke-width="2"/>
+  <text x="485" y="260" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Spectral Subtraction</text>
+  <text x="485" y="275" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">FFT-based noise</text>
+  <text x="485" y="290" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">removal</text>
+  
+  <!-- Algorithm 4 -->
+  <rect x="580" y="240" width="150" height="60" rx="5" fill="#f7fafc" stroke="#667eea" stroke-width="2"/>
+  <text x="655" y="260" text-anchor="middle" fill="#2d3748" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Real-time Processing</text>
+  <text x="655" y="275" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">~20-50ms latency</text>
+  <text x="655" y="290" text-anchor="middle" fill="#4a5568" font-family="Arial, sans-serif" font-size="10">Web Audio API</text>
+  
+  <!-- Footer -->
+  <text x="400" y="380" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="12">
+    Author: Devesh Maurya | Email: deveshmaurya1996@gmail.com
+  </text>
+</svg>

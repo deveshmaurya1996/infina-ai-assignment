@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 24px; font-weight: bold; fill: #2c3e50; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; fill: #34495e; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #2c3e50; }
+      .component { fill: #3498db; stroke: #2980b9; stroke-width: 2; }
+      .service { fill: #e74c3c; stroke: #c0392b; stroke-width: 2; }
+      .data { fill: #27ae60; stroke: #229954; stroke-width: 2; }
+      .flow { stroke: #7f8c8d; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .polling { stroke: #f39c12; stroke-width: 2; fill: none; marker-end: url(#arrowhead); stroke-dasharray: 5,5; }
+      .oauth { stroke: #9b59b6; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7f8c8d" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" class="title">Google Calendar UI - System Architecture</text>
+  
+  <!-- User Browser -->
+  <rect x="50" y="80" width="200" height="120" rx="10" class="component" />
+  <text x="150" y="105" text-anchor="middle" class="subtitle">User Browser</text>
+  <text x="150" y="125" text-anchor="middle" class="label">React + TypeScript</text>
+  <text x="150" y="140" text-anchor="middle" class="label">OAuth2 Client</text>
+  <text x="150" y="155" text-anchor="middle" class="label">Smart Polling</text>
+  <text x="150" y="170" text-anchor="middle" class="label">Local Storage</text>
+  <text x="150" y="185" text-anchor="middle" class="label">Real-time UI</text>
+  
+  <!-- Google OAuth -->
+  <rect x="350" y="80" width="200" height="120" rx="10" class="service" />
+  <text x="450" y="105" text-anchor="middle" class="subtitle">Google OAuth</text>
+  <text x="450" y="125" text-anchor="middle" class="label">Authorization Server</text>
+  <text x="450" y="140" text-anchor="middle" class="label">Token Management</text>
+  <text x="450" y="155" text-anchor="middle" class="label">Scope Validation</text>
+  <text x="450" y="170" text-anchor="middle" class="label">Consent Screen</text>
+  <text x="450" y="185" text-anchor="middle" class="label">Security Policies</text>
+  
+  <!-- Google Calendar API -->
+  <rect x="650" y="80" width="200" height="120" rx="10" class="service" />
+  <text x="750" y="105" text-anchor="middle" class="subtitle">Google Calendar API</text>
+  <text x="750" y="125" text-anchor="middle" class="label">RESTful Endpoints</text>
+  <text x="750" y="140" text-anchor="middle" class="label">Event CRUD</text>
+  <text x="750" y="155" text-anchor="middle" class="label">Sync Token Support</text>
+  <text x="750" y="170" text-anchor="middle" class="label">Rate Limiting</text>
+  <text x="750" y="185" text-anchor="middle" class="label">Webhook Support</text>
+  
+  <!-- Local Storage -->
+  <rect x="950" y="80" width="200" height="120" rx="10" class="data" />
+  <text x="1050" y="105" text-anchor="middle" class="subtitle">Local Storage</text>
+  <text x="1050" y="125" text-anchor="middle" class="label">Access Tokens</text>
+  <text x="1050" y="140" text-anchor="middle" class="label">Refresh Tokens</text>
+  <text x="1050" y="155" text-anchor="middle" class="label">Event Cache</text>
+  <text x="1050" y="170" text-anchor="middle" class="label">Sync Tokens</text>
+  <text x="1050" y="185" text-anchor="middle" class="label">User Preferences</text>
+  
+  <!-- OAuth Flow -->
+  <path d="M 250 140 L 350 140" class="oauth" />
+  <text x="300" y="135" text-anchor="middle" class="label">1. Authorization Request</text>
+  
+  <path d="M 450 140 L 550 140" class="oauth" />
+  <text x="500" y="135" text-anchor="middle" class="label">2. Token Exchange</text>
+  
+  <path d="M 650 140 L 750 140" class="oauth" />
+  <text x="700" y="135" text-anchor="middle" class="label">3. API Access</text>
+  
+  <!-- Polling Flow -->
+  <path d="M 150 200 L 150 250 L 750 250 L 750 200" class="polling" />
+  <text x="450" y="245" text-anchor="middle" class="label">4. Smart Polling (30s intervals)</text>
+  
+  <!-- Data Flow -->
+  <path d="M 750 200 L 950 200" class="flow" />
+  <text x="850" y="195" text-anchor="middle" class="label">5. Cache Events</text>
+  
+  <path d="M 1050 200 L 1050 250 L 150 250 L 150 200" class="flow" />
+  <text x="600" y="245" text-anchor="middle" class="label">6. Update UI</text>
+  
+  <!-- Component Details -->
+  <rect x="50" y="300" width="1100" height="400" rx="10" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="2" />
+  <text x="600" y="325" text-anchor="middle" class="subtitle">Application Components</text>
+  
+  <!-- React Components -->
+  <rect x="70" y="340" width="250" height="120" rx="5" fill="#3498db" stroke="#2980b9" stroke-width="1" />
+  <text x="195" y="360" text-anchor="middle" class="subtitle">React Components</text>
+  <text x="195" y="380" text-anchor="middle" class="label">• App.tsx (Main Container)</text>
+  <text x="195" y="395" text-anchor="middle" class="label">• CalendarView (Event Display)</text>
+  <text x="195" y="410" text-anchor="middle" class="label">• EventCard (Individual Events)</text>
+  <text x="195" y="425" text-anchor="middle" class="label">• LoginButton (OAuth Trigger)</text>
+  <text x="195" y="440" text-anchor="middle" class="label">• LoadingSpinner (UI Feedback)</text>
+  
+  <!-- OAuth Service -->
+  <rect x="340" y="340" width="250" height="120" rx="5" fill="#e74c3c" stroke="#c0392b" stroke-width="1" />
+  <text x="465" y="360" text-anchor="middle" class="subtitle">OAuth Service</text>
+  <text x="465" y="380" text-anchor="middle" class="label">• Google OAuth2 Flow</text>
+  <text x="465" y="395" text-anchor="middle" class="label">• Token Management</text>
+  <text x="465" y="410" text-anchor="middle" class="label">• Automatic Refresh</text>
+  <text x="465" y="425" text-anchor="middle" class="label">• Scope Validation</text>
+  <text x="465" y="440" text-anchor="middle" class="label">• Error Handling</text>
+  
+  <!-- Calendar Service -->
+  <rect x="610" y="340" width="250" height="120" rx="5" fill="#27ae60" stroke="#229954" stroke-width="1" />
+  <text x="735" y="360" text-anchor="middle" class="subtitle">Calendar Service</text>
+  <text x="735" y="380" text-anchor="middle" class="label">• Event Fetching</text>
+  <text x="735" y="395" text-anchor="middle" class="label">• Smart Polling Logic</text>
+  <text x="735" y="410" text-anchor="middle" class="label">• Incremental Sync</text>
+  <text x="735" y="425" text-anchor="middle" class="label">• Cache Management</text>
+  <text x="735" y="440" text-anchor="middle" class="label">• Error Recovery</text>
+  
+  <!-- Storage Service -->
+  <rect x="880" y="340" width="250" height="120" rx="5" fill="#f39c12" stroke="#e67e22" stroke-width="1" />
+  <text x="1005" y="360" text-anchor="middle" class="subtitle">Storage Service</text>
+  <text x="1005" y="380" text-anchor="middle" class="label">• Local Storage API</text>
+  <text x="1005" y="395" text-anchor="middle" class="label">• Token Persistence</text>
+  <text x="1005" y="410" text-anchor="middle" class="label">• Event Caching</text>
+  <text x="1005" y="425" text-anchor="middle" class="label">• Sync State</text>
+  <text x="1005" y="440" text-anchor="middle" class="label">• User Settings</text>
+  
+  <!-- Polling Strategy -->
+  <rect x="70" y="480" width="1060" height="200" rx="5" fill="#9b59b6" stroke="#8e44ad" stroke-width="1" />
+  <text x="600" y="500" text-anchor="middle" class="subtitle">Smart Polling Strategy</text>
+  
+  <!-- Polling Flow -->
+  <rect x="90" y="520" width="200" height="80" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" />
+  <text x="190" y="540" text-anchor="middle" class="subtitle">1. Visibility Check</text>
+  <text x="190" y="560" text-anchor="middle" class="label">• Page Visible?</text>
+  <text x="190" y="575" text-anchor="middle" class="label">• Tab Active?</text>
+  <text x="190" y="590" text-anchor="middle" class="label">• User Online?</text>
+  
+  <rect x="310" y="520" width="200" height="80" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" />
+  <text x="410" y="540" text-anchor="middle" class="subtitle">2. Token Validation</text>
+  <text x="410" y="560" text-anchor="middle" class="label">• Token Expired?</text>
+  <text x="410" y="575" text-anchor="middle" class="label">• Refresh Needed?</text>
+  <text x="410" y="590" text-anchor="middle" class="label">• Valid Scope?</text>
+  
+  <rect x="530" y="520" width="200" height="80" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" />
+  <text x="630" y="540" text-anchor="middle" class="subtitle">3. API Request</text>
+  <text x="630" y="560" text-anchor="middle" class="label">• Use Sync Token</text>
+  <text x="630" y="575" text-anchor="middle" class="label">• Incremental Update</text>
+  <text x="630" y="590" text-anchor="middle" class="label">• Error Handling</text>
+  
+  <rect x="750" y="520" width="200" height="80" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" />
+  <text x="850" y="540" text-anchor="middle" class="subtitle">4. Cache Update</text>
+  <text x="850" y="560" text-anchor="middle" class="label">• Store New Events</text>
+  <text x="850" y="575" text-anchor="middle" class="label">• Update Sync Token</text>
+  <text x="850" y="590" text-anchor="middle" class="label">• Trigger UI Update</text>
+  
+  <rect x="970" y="520" width="140" height="80" rx="5" fill="#ecf0f1" stroke="#bdc3c7" stroke-width="1" />
+  <text x="1040" y="540" text-anchor="middle" class="subtitle">5. Wait</text>
+  <text x="1040" y="560" text-anchor="middle" class="label">• 30s Interval</text>
+  <text x="1040" y="575" text-anchor="middle" class="label">• Exponential</text>
+  <text x="1040" y="590" text-anchor="middle" class="label">• Backoff</text>
+  
+  <!-- Flow Arrows -->
+  <path d="M 290 560 L 310 560" class="flow" />
+  <path d="M 510 560 L 530 560" class="flow" />
+  <path d="M 730 560 L 750 560" class="flow" />
+  <path d="M 970 560 L 990 560" class="flow" />
+  <path d="M 1040 600 L 1040 620 L 190 620 L 190 600" class="flow" />
+  
+  <!-- Legend -->
+  <rect x="50" y="720" width="1100" height="60" rx="5" fill="#f8f9fa" stroke="#dee2e6" stroke-width="1" />
+  <text x="600" y="740" text-anchor="middle" class="subtitle">Legend</text>
+  
+  <rect x="70" y="750" width="20" height="20" class="component" />
+  <text x="100" y="765" class="label">React Components</text>
+  
+  <rect x="200" y="750" width="20" height="20" class="service" />
+  <text x="230" y="765" class="label">External Services</text>
+  
+  <rect x="330" y="750" width="20" height="20" class="data" />
+  <text x="360" y="765" class="label">Data Storage</text>
+  
+  <path d="M 450 750 L 470 750" class="flow" />
+  <text x="480" y="755" class="label">Data Flow</text>
+  
+  <path d="M 550 750 L 570 750" class="polling" />
+  <text x="580" y="755" class="label">Polling</text>
+  
+  <path d="M 650 750 L 670 750" class="oauth" />
+  <text x="680" y="755" class="label">OAuth Flow</text>
+</svg> 

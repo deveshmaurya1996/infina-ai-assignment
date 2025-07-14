@@ -1,0 +1,35 @@
+{
+  "name": "browser-audio-separation",
+  "version": "1.0.0",
+  "description": "Real-time browser audio separation with Web Audio API",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "dev": "python -m http.server 8000 --bind 127.0.0.1",
+    "build": "echo \"No build process needed\" && exit 0"
+  },
+  "keywords": [
+    "audio",
+    "separation",
+    "web-audio-api",
+    "real-time",
+    "browser",
+    "javascript"
+  ],
+  "author": "Devesh Maurya <deveshmaurya1996@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deveshmaurya1996/infina-ai-assignment.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deveshmaurya1996/infina-ai-assignment/issues"
+  },
+  "homepage": "https://github.com/deveshmaurya1996/infina-ai-assignment#readme"
+} 
